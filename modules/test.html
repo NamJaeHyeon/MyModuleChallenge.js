@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fill Polygon</title>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="300" height="150" style="border:1px solid #000000;"></canvas>
+
+    <script>
+      const canvas = document.getElementById('myCanvas');
+      const ctx = canvas.getContext('2d');
+
+      function drawPolygon(points, fillColor) {
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+
+        for (let i = 1; i < points.length; i++) {
+          ctx.lineTo(points[i].x, points[i].y);
+        }
+
+        ctx.closePath();
+        ctx.fillStyle = fillColor;
+        ctx.fill();
+      }
+
+      // 다각형의 꼭짓점 좌표 설정
+      const polygonPoints = [
+        { x: 50, y: 50 },
+        { x: 150, y: 50 },
+        { x: 200, y: 100 },
+        { x: 150, y: 150 },
+        { x: 50, y: 150 },
+        { x: 0, y: 100 }
+      ];
+
+      // 다각형 채우기
+      drawPolygon(polygonPoints, 'blue');
+    </script>
+  </body>
+</html>
